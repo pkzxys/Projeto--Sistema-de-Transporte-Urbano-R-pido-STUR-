@@ -12,10 +12,6 @@ O projeto foi dividido em quatro etapas principais:
 
 Todo o processo de concepção do projeto, desde a análise de requisitos (Minimundo) até o Modelo Conceitual (DER) e o Modelo Lógico (3FN), está documentado nos PDFs desta pasta, conforme a metodologia da disciplina.
 
-* 📄 **[Atividade 1: Projeto Conceitual (Minimundo)](./documentacao/Atividade_1_Minimundo.pdf)**
-* 📄 **[Atividade 2: Modelo Conceitual (DER)](./documentacao/Atividade_2_Modelo_Conceitual_DER.pdf)**
-* 📄 **[Atividade 3: Projeto Lógico (Formas Normais)](./documentacao/Atividade_3_Modelo_Logico_3FN.pdf)**
-
 ## 2. Estrutura do Banco de Dados
 
 O modelo lógico final consiste em 4 tabelas principais, todas normalizadas até a 3FN:
@@ -91,4 +87,5 @@ Este print mostra o log de execução do script `manipulacao.sql`, comprovando q
 ---
 
 Feito com ☕ por **Fabio Santos**.
+
 
