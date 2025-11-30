@@ -1,92 +1,153 @@
-#  Projeto de Modelagem de Banco de Dados: Pizzaria "Sabor em Fatias"
+Projeto de Modelagem de Banco de Dados: STUR – Sistema de Transporte Urbano Rápido
 
-Este repositório contém o projeto SQL completo desenvolvido para a disciplina de Modelagem de Banco de Dados (ADS - Cruzeiro do Sul Virtual). O objetivo foi modelar, implementar e manipular um banco de dados relacional funcional (em 3ª Forma Normal - 3FN) para gerenciar o sistema de pedidos de uma pizzaria fictícia.
+Este repositório contém o projeto SQL completo desenvolvido para a disciplina de Modelagem de Banco de Dados (ADS – Cruzeiro do Sul Virtual).
+O objetivo foi modelar, estruturar e implementar um banco de dados relacional funcional (em 3ª Forma Normal – 3FN) para gerenciar rotas, ônibus, motoristas e viagens do sistema de transporte público STUR.
 
 O projeto foi dividido em quatro etapas principais:
-* **Modelo Conceitual:** Definição do minimundo e dos conceitos de dados.
-* **Modelo Entidade-Relacionamento (DER):** Criação do diagrama DER, identificando entidades, atributos e cardinalidades.
-* **Modelo Lógico:** Conversão do DER em um esquema de tabelas normalizado (3FN).
-* **Implementação (SQL):** Criação dos scripts SQL (DDL e DML) para construir e testar o banco de dados.
 
-## 1. Documentação do Projeto (Atividades 1, 2 e 3)
+Modelo Conceitual: Definição do minimundo e identificação das entidades iniciais.
 
-Todo o processo de concepção do projeto, desde a análise de requisitos (Minimundo) até o Modelo Conceitual (DER) e o Modelo Lógico (3FN), está documentado nos PDFs desta pasta, conforme a metodologia da disciplina.
+Modelo Entidade-Relacionamento (DER): Criação do diagrama conceitual com entidades, atributos e cardinalidades.
 
-## 2. Estrutura do Banco de Dados
+Modelo Lógico: Conversão do DER em esquema de tabelas normalizadas (1FN, 2FN e 3FN).
+
+Implementação (SQL): Construção do banco via scripts DDL, DML, consultas e manipulação.
+
+1. Documentação do Projeto (Atividades 1, 2 e 3)
+
+Todo o processo de concepção — desde o minimundo, passando pela definição das entidades, restrições, relacionamentos, até a normalização (1FN, 2FN e 3FN) — está totalmente detalhado nos PDFs desta pasta, conforme metodologia exigida pela disciplina.
+
+Esses documentos incluem:
+
+Minimundo do STUR
+
+Entidades e atributos
+
+Relações entre motoristas, ônibus, rotas e viagens
+
+Diagramas DER
+
+Normalização completa até a 3FN
+
+2. Estrutura do Banco de Dados
 
 O modelo lógico final consiste em 4 tabelas principais, todas normalizadas até a 3FN:
 
-* **`CLIENTE`**: Armazena os dados cadastrais dos clientes (Nome, Telefone, Endereço).
-* **`PRODUTO`**: Funciona como o cardápio, armazenando os itens vendáveis (Pizzas, Bebidas, etc.) com seus respectivos preços.
-* **`PEDIDO`**: Registra a transação de venda, ligando um cliente a um status, data e valor total.
-* **`ITEM_PEDIDO`**: Tabela associativa que resolve o relacionamento N:M (muitos-para-muitos) entre `PEDIDO` e `PRODUTO`. É nela que a quantidade e o preço unitário de cada item do pedido são armazenados.
+MOTORISTA
 
-## 3. Conteúdo do Repositório
+Armazena os dados dos motoristas cadastrados (Nome, Telefone, CPF, Categoria CNH).
 
-Este repositório contém os scripts SQL e a documentação completa do projeto:
+ONIBUS
 
-* **`/documentacao`**: Pasta contendo os PDFs das Atividades 1, 2 e 3 (o processo de concepção).
-* **`README.md`**: Este arquivo, com a documentação do projeto.
-* **`schema.sql`**: (DDL - Data Definition Language) Script que **cria** a estrutura do banco (`CREATE DATABASE`, `CREATE TABLE`) e define todas as chaves primárias (PK) e estrangeiras (FK).
-* **`insert.sql`**: (DML - Data Manipulation Language) Script que **popula** o banco de dados, inserindo os dados de exemplo (clientes, produtos e pedidos).
-* **`consultas.sql`**: (DQL - Data Query Language) Contém 5 consultas `SELECT` complexas para análise de dados, utilizando `JOIN`, `GROUP BY`, `ORDER BY` e `AVG()`.
-* **`manipulacao.sql`**: (DML) Contém os comandos `UPDATE` e `DELETE` para demonstrar a manipulação e a integridade dos dados (como `ON DELETE CASCADE`).
+Contém os veículos utilizados nas viagens (Frota, Placa, Capacidade).
 
-## 4. Como Executar
+ROTA
 
-O projeto foi desenvolvido e testado utilizando **MySQL Workbench**.
+Define os trajetos utilizados pelo sistema, contendo Origem, Destino e Nome da Rota.
 
-É crucial que os scripts sejam executados na ordem correta para que as Chaves Estrangeiras (FKs) funcionem.
+VIAGEM
 
-1.  Execute o **`schema.sql`** primeiro. Isso irá criar o banco `pizzaria_db` e todas as tabelas vazias.
-2.  Execute o **`insert.sql`** em seguida. Isso irá popular as tabelas com os dados de exemplo.
-3.  Execute o **`consultas.sql`** para testar as consultas de leitura e ver os resultados.
-4.  Execute o **`manipulacao.sql`** por último, para testar as regras de atualização e exclusão.
+Registra cada viagem realizada, vinculando:
 
-## 5. Prova de Execução (MySQL Workbench)
+ônibus
 
-Esta seção contém os prints que comprovam a criação e execução bem-sucedida de todos os scripts no MySQL Workbench.
+motorista
 
----
+rota
 
-### 5.1. Criação e Inserção (Action Output)
+data
 
-O print abaixo mostra o log de execução (`Action Output`) dos scripts `schema.sql` e `insert.sql`, indicando que o banco e as tabelas foram criados (Linhas 1-7) e os dados foram inseridos (Linhas 8-17) com sucesso.
+horários de partida e chegada
 
-<img width="1100" height="800" alt="imagem log de execução" src="https://github.com/user-attachments/assets/a6fd6703-c824-4f6e-94e6-e80ddd799fec" />
+É também a tabela que centraliza os relacionamentos e controla o fluxo operacional do sistema.
 
----
+3. Conteúdo do Repositório
 
-### 5.2. Resultados das Consultas (Result Grid)
+Este repositório contém todos os scripts SQL e toda a documentação do projeto:
 
-Os prints a seguir mostram os resultados (`Result Grid`) das consultas de análise de dados (script `consultas.sql`).
+/documentacao
+    PDFs das Atividades 1, 2 e 3 (todo o processo conceitual e lógico)
 
-**Resultado da Consulta 3 (Detalhes do Pedido 102 com `JOIN`):**
-*(Este print mostra a junção das 4 tabelas para exibir um pedido específico)*
+/schema.sql
+    Script DDL – Criação do banco STUR e das quatro tabelas principais
+    (CREATE DATABASE, CREATE TABLE, PKs e FKs)
 
-<img width="1100" height="389" alt="Imagem Consulta 3" src="https://github.com/user-attachments/assets/71e72f73-e989-4b5d-8635-00320959d73b" />
+/insert.sql
+    Script DML – Inserção dos dados de exemplo:
+        motoristas, ônibus, rotas e viagens
 
-**Resultado da Consulta 4 (Ranking de Clientes com `COUNT` e `GROUP BY`):**
-*(Este print mostra o agrupamento de pedidos por cliente)*
+/consultas.sql
+    Script com 10 consultas SELECT elaboradas (JOIN, GROUP BY, ORDER BY,
+    COUNT, SUM, AVG e filtros avançados)
 
-<img width="1100" height="389" alt="Imagem Consulta 4" src="https://github.com/user-attachments/assets/e46da049-5bb8-422c-bddd-4d440fb9a58f" />
+/manipulacao.sql
+    Script DML com comandos UPDATE e DELETE
+    para testar integridade e manipulação dos dados
 
-**Resultado da Consulta 5 (Ranking de Produtos Vendidos com `SUM`):**
-*(Este print mostra o ranking de produtos mais vendidos)*
+README.md
+    Este arquivo com toda a documentação do projeto
 
-<img width="1100" height="389" alt="Imagem Consulta5" src="https://github.com/user-attachments/assets/5ba61338-d44e-41b7-b909-81bdcb272cea" />
+4. Como Executar
 
----
+O projeto foi desenvolvido e testado utilizando MySQL Workbench.
+Para que tudo funcione corretamente, os scripts devem ser executados na ordem a seguir:
 
-### 5.3. Execução da Manipulação (Action Output)
+1️⃣ Execute o schema.sql
 
-Este print mostra o log de execução do script `manipulacao.sql`, comprovando que os comandos `UPDATE` e `DELETE` foram executados com sucesso (Linhas 24-32), respeitando as chaves primárias e a integridade referencial.
+Cria o banco stur_db e todas as tabelas vazias.
 
-<img width="1100" height="389" alt="Imagem Log execução" src="https://github.com/user-attachments/assets/ef300f8a-c49d-4657-bbd4-4c5e2b5828d9" />
+2️⃣ Execute o insert.sql
 
----
+Popula o banco com dados realistas de motoristas, ônibus, rotas e viagens.
 
-Feito por **Paulo Ferreira**.
+3️⃣ Execute o consultas.sql
 
+Testa JOINs, agrupamentos, análises e consultas operacionais.
 
+4️⃣ Execute o manipulacao.sql
 
+Testa atualizações, exclusões e regras de integridade referencial.
+
+5. Prova de Execução (MySQL Workbench)
+
+Esta seção demonstra a execução bem-sucedida de todos os scripts por meio de prints extraídos do Action Output e Result Grid do MySQL Workbench.
+
+5.1. Criação e Inserção (Action Output)
+
+O print deve mostrar:
+
+Banco stur_db criado
+
+Tabelas MOTORISTA, ONIBUS, ROTA e VIAGEM criadas
+
+Dados inseridos com sucesso
+
+(Inserir imagem do seu Action Output aqui)
+
+5.2. Resultados das Consultas (Result Grid)
+
+Exemplos de prints que devem ser inseridos:
+
+✔️ Resultado da Consulta 4 – Detalhes completos de uma viagem (JOIN entre 4 tabelas)
+
+(Imagem mostrando id_viagem, motorista, ônibus e rota)
+
+✔️ Resultado da Consulta 5 – Ranking de rotas mais utilizadas
+
+(Imagem mostrando GROUP BY + ORDER BY)
+
+✔️ Resultado da Consulta 6 – Total de ônibus utilizados por dia
+
+(Imagem mostrando SUM e agrupamento por data)
+
+5.3. Execução da Manipulação (Action Output)
+
+O print deve mostrar:
+
+Registros atualizados (UPDATE)
+
+Registros excluídos (DELETE)
+
+Mensagens de sucesso com integridade referencial preservada
+
+(Inserir imagem do seu Action Output aqui)
