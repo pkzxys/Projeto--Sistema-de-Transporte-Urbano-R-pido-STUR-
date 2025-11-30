@@ -86,6 +86,7 @@ Este print mostra o log de execução do script `manipulacao.sql`, comprovando q
 
 ---
 
-Feito com ☕ por **Fabio Santos**.
+Feito por **Paulo Ferreira**.
+
 
 
