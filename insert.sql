@@ -1,50 +1,58 @@
 -- -----------------------------------------------------
--- Script de Inserção (DML) - Pizzaria "Sabor em Fatias"
+-- SCRIPT DE INSERÇÃO (DML)
+-- Sistema STUR – Sistema de Transporte Urbano Rápido
 -- -----------------------------------------------------
-USE pizzaria_db;
 
--- 1. Inserir Clientes
-INSERT INTO CLIENTE (ID_Cliente, Nome, Telefone, Rua, Numero, Bairro, Complemento) 
-VALUES 
-(1, 'Ana Silva', '(11) 98877-6655', 'Rua das Flores', '100', 'Centro', 'Apto 101'),
-(2, 'Bruno Costa', '(11) 91234-5678', 'Avenida Principal', '500', 'Vila Nova', NULL),
-(3, 'Carla Dias', '(11) 99999-0000', 'Travessa dos Pássaros', '15B', 'Jardim Céu', 'Fundos');
+USE stur_db;
 
--- 2. Inserir Produtos
-INSERT INTO PRODUTO (ID_Produto, Nome, Descricao, Tamanho, Preco) 
-VALUES 
-(1, 'Pizza Calabresa', 'Calabresa, cebola e azeitonas', 'Grande', 45.00),
-(2, 'Pizza Mussarela', 'Queijo mussarela e tomate', 'Grande', 42.00),
-(3, 'Pizza Frango Catupiry', 'Frango desfiado com catupiry', 'Média', 38.50),
-(4, 'Refrigerante Coca-Cola', 'Lata 350ml', 'Lata', 6.50),
-(5, 'Água Mineral sem Gás', 'Garrafa 500ml', 'Garrafa', 4.00);
+-- -----------------------------------------------------
+-- 1. INSERIR MOTORISTAS
+-- -----------------------------------------------------
+INSERT INTO MOTORISTA (id_motorista, nome, cpf, telefone, categoria_cnh) VALUES
+(1, 'Carlos Eduardo Silva', '123.456.789-00', '(11) 90001-0001', 'D'),
+(2, 'Marcos Pereira',       '987.654.321-11', '(11) 90001-0002', 'D'),
+(3, 'José Antônio Ribeiro', '321.654.987-22', '(11) 90001-0003', 'E'),
+(4, 'Fernando Almeida',     '456.789.123-33', '(11) 90001-0004', 'D'),
+(5, 'Juliano Monteiro',     '159.753.486-44', '(11) 90001-0005', 'E');
 
--- 3. Inserir Pedidos
--- Registra os pedidos com Valor_Total 0.00,
--- pois o valor correto será calculado e atualizado posteriormente,
--- com base na soma dos seus itens.
-INSERT INTO PEDIDO (ID_Pedido, DataHora, Valor_Total, Status, FK_ID_Cliente) 
-VALUES 
-(101, '2025-11-14 19:30:00', 0.00, 'Entregue', 1), -- Pedido da Ana Silva
-(102, '2025-11-14 19:45:00', 0.00, 'Entregue', 2), -- Pedido do Bruno Costa
-(103, '2025-11-14 20:10:00', 0.00, 'Em Preparo', 1); -- Outro pedido da Ana Silva
 
--- 4. Inserir os Itens dos Pedidos
-INSERT INTO ITEM_PEDIDO (FK_ID_Pedido, FK_ID_Produto, Quantidade, Preco_Unitario) 
-VALUES 
-(101, 1, 1, 45.00), -- 1x Pizza Calabresa (ID 1)
-(101, 4, 1, 6.50);  -- 1x Coca-Cola (ID 4)
+-- -----------------------------------------------------
+-- 2. INSERIR ÔNIBUS
+-- -----------------------------------------------------
+INSERT INTO ONIBUS (id_onibus, numero_frota, placa, capacidade) VALUES
+(1, 'FROTA-101', 'ABC1A23', 45),
+(2, 'FROTA-102', 'BCD2B34', 50),
+(3, 'FROTA-103', 'CDE3C45', 42),
+(4, 'FROTA-104', 'DEF4D56', 48),
+(5, 'FROTA-105', 'EFG5E67', 46);
 
-INSERT INTO ITEM_PEDIDO (FK_ID_Pedido, FK_ID_Produto, Quantidade, Preco_Unitario) 
-VALUES 
-(102, 2, 2, 42.00), -- 2x Pizza Mussarela (ID 2)
-(102, 4, 1, 6.50);  -- 1x Coca-Cola (ID 4)
 
-INSERT INTO ITEM_PEDIDO (FK_ID_Pedido, FK_ID_Produto, Quantidade, Preco_Unitario) 
-VALUES 
-(103, 3, 1, 38.50); -- 1x Frango Catupiry (ID 3)
+-- -----------------------------------------------------
+-- 3. INSERIR ROTAS
+-- -----------------------------------------------------
+INSERT INTO ROTA (id_rota, nome_rota, origem, destino) VALUES
+(1, 'Linha 101 – Centro / Bairro Azul', 'Terminal Central', 'Bairro Azul'),
+(2, 'Linha 202 – Vila Nova / Estação Sul', 'Vila Nova', 'Estação Sul'),
+(3, 'Linha 305 – Aeroporto / Centro', 'Aeroporto', 'Centro'),
+(4, 'Linha 410 – Bairro Verde / Shopping Norte', 'Bairro Verde', 'Shopping Norte'),
+(5, 'Linha 512 – Terminal Oeste / Centro', 'Terminal Oeste', 'Centro');
 
--- 5. Atualizar os Valores Totais dos Pedidos
-UPDATE PEDIDO SET Valor_Total = (45.00 + 6.50) WHERE ID_Pedido = 101;
-UPDATE PEDIDO SET Valor_Total = ( (2 * 42.00) + 6.50 ) WHERE ID_Pedido = 102;
-UPDATE PEDIDO SET Valor_Total = 38.50 WHERE ID_Pedido = 103;
+
+-- -----------------------------------------------------
+-- 4. INSERIR VIAGENS
+-- (Viagem = Rota + Motorista + Ônibus + Horários)
+-- -----------------------------------------------------
+INSERT INTO VIAGEM 
+(id_viagem, data_viagem, horario_partida, horario_chegada, id_onibus, id_motorista, id_rota)
+VALUES
+(1, '2025-02-10', '06:00:00', '06:45:00', 1, 1, 1),
+(2, '2025-02-10', '07:00:00', '07:50:00', 2, 2, 2),
+(3, '2025-02-10', '08:10:00', '08:55:00', 3, 3, 3),
+(4, '2025-02-10', '09:30:00', '10:20:00', 4, 4, 4),
+(5, '2025-02-10', '10:00:00', '10:40:00', 5, 5, 5),
+
+(6, '2025-02-11', '06:00:00', '06:45:00', 1, 2, 1),
+(7, '2025-02-11', '07:00:00', '07:50:00', 2, 3, 2),
+(8, '2025-02-11', '08:10:00', '08:55:00', 3, 4, 3),
+(9,  '2025-02-11', '09:30:00', '10:20:00', 4, 5, 4),
+(10, '2025-02-11', '10:00:00', '10:40:00', 5, 1, 5);
