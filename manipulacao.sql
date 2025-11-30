@@ -6,7 +6,7 @@
 USE stur_db;
 
 -- =====================================================
--- 1. UPDATE – Atualização de Dados
+-- 1. UPDATE – Atualização de Registros
 -- =====================================================
 
 -- -----------------------------------------------------
@@ -14,82 +14,79 @@ USE stur_db;
 -- Objetivo: Atualizar o telefone de um motorista.
 -- -----------------------------------------------------
 UPDATE MOTORISTA
-SET telefone = '(11) 97777-1234'
-WHERE id_motorista = 3;
+SET telefone = '(11) 95555-9090'
+WHERE id_motorista = 2;
 
 
 -- -----------------------------------------------------
 -- UPDATE 2:
--- Objetivo: Trocar o motorista responsável por uma viagem.
--- Cenário: O motorista faltou e precisa ser substituído.
+-- Objetivo: Corrigir a capacidade de um ônibus após reforma.
 -- -----------------------------------------------------
-UPDATE VIAGEM
-SET id_motorista = 4
-WHERE id_viagem = 7;
+UPDATE ONIBUS
+SET capacidade = 55
+WHERE id_onibus = 3;
 
 
 -- -----------------------------------------------------
 -- UPDATE 3:
--- Objetivo: Atualizar a capacidade de um ônibus.
--- (Ex.: ônibus passou por reforma e agora comporta mais passageiros)
+-- Objetivo: Trocar o motorista responsável por uma viagem.
 -- -----------------------------------------------------
-UPDATE ONIBUS
-SET capacidade = 52
-WHERE id_onibus = 2;
+UPDATE VIAGEM
+SET id_motorista = 1
+WHERE id_viagem = 6;
 
 
 -- -----------------------------------------------------
 -- UPDATE 4:
--- Objetivo: Alterar o destino de uma rota.
--- (Ex.: prefeitura mudou o percurso da linha)
+-- Objetivo: Alterar o destino de uma rota após mudança do trajeto.
 -- -----------------------------------------------------
 UPDATE ROTA
-SET destino = 'Bairro Nova Esperança'
-WHERE id_rota = 1;
+SET destino = 'Estação Central'
+WHERE id_rota = 5;
 
 
 -- -----------------------------------------------------
 -- UPDATE 5:
--- Objetivo: Ajustar o horário de chegada de uma viagem atrasada.
+-- Objetivo: Ajustar horário de chegada devido a atraso.
 -- -----------------------------------------------------
 UPDATE VIAGEM
-SET horario_chegada = '07:10:00'
-WHERE id_viagem = 2;
+SET horario_chegada = '11:05:00'
+WHERE id_viagem = 4;
 
 
 
 -- =====================================================
--- 2. DELETE – Exclusão de Dados
+-- 2. DELETE – Remoção de Registros
 -- =====================================================
 
 -- -----------------------------------------------------
 -- DELETE 1:
--- Objetivo: Remover um motorista que não trabalha mais na empresa.
--- (OBS: somente se ele não estiver vinculado a viagens recentes)
--- -----------------------------------------------------
-DELETE FROM MOTORISTA
-WHERE id_motorista = 5;
-
-
--- -----------------------------------------------------
--- DELETE 2:
--- Objetivo: Apagar uma viagem cancelada.
+-- Objetivo: Excluir uma viagem cancelada.
 -- -----------------------------------------------------
 DELETE FROM VIAGEM
 WHERE id_viagem = 10;
 
 
 -- -----------------------------------------------------
--- DELETE 3:
--- Objetivo: Remover um ônibus que foi aposentado.
+-- DELETE 2:
+-- Objetivo: Remover um ônibus fora de operação.
+-- (OBS: só funciona se não houver viagens vinculadas)
 -- -----------------------------------------------------
 DELETE FROM ONIBUS
 WHERE id_onibus = 5;
 
 
 -- -----------------------------------------------------
+-- DELETE 3:
+-- Objetivo: Excluir um motorista desligado da empresa.
+-- -----------------------------------------------------
+DELETE FROM MOTORISTA
+WHERE id_motorista = 4;
+
+
+-- -----------------------------------------------------
 -- DELETE 4:
--- Objetivo: Excluir uma rota descontinuada pela prefeitura.
+-- Objetivo: Remover uma rota desativada pela prefeitura.
 -- -----------------------------------------------------
 DELETE FROM ROTA
 WHERE id_rota = 4;
@@ -97,7 +94,7 @@ WHERE id_rota = 4;
 
 -- -----------------------------------------------------
 -- DELETE 5:
--- Objetivo: Limpar viagens antigas (ex.: antes de 2024).
+-- Objetivo: Excluir viagens antigas (antes de 2024).
 -- -----------------------------------------------------
 DELETE FROM VIAGEM
 WHERE data_viagem < '2024-01-01';
