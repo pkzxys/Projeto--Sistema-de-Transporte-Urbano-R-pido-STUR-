@@ -61,3 +61,13 @@ Curso: Análise e Desenvolvimento de Sistemas (ADS)
 
 Made by⚡Paulo Ferreira
 
+
+
+[Modelagem de Banco de Dados - Experiencia Pratica 1.pdf](https://github.com/user-attachments/files/23842104/Modelagem.de.Banco.de.Dados.-.Experiencia.Pratica.1.pdf)
+
+
+
+
+
+
+
