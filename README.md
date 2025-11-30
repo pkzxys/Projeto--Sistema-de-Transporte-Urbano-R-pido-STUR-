@@ -54,8 +54,10 @@ Rode os scripts nesta ordem:
 4️⃣ 04-updates-deletes.sql
 
 
-Feito por:
 
-Paulo Ferreira
 Projeto acadêmico — Universidade Cruzeiro do Sul
 Curso: Análise e Desenvolvimento de Sistemas (ADS)
+
+
+Made by⚡Paulo Ferreira
+
