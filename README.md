@@ -1,59 +1,47 @@
-# **STUR – Sistema de Gerenciamento de Transporte Urbano Rápido**
+🚍 STUR — Sistema de Transporte Urbano Rápido  
+Experiência Prática IV — Modelagem e Manipulação de Dados (ADS)
 
-**Desenvolvido por:** Paulo Ferreira  
-**Instituição:** Universidade Cruzeiro do Sul  
-**Disciplina:** Modelagem de Banco de Dados  
-**Experiências Práticas:** EP1, EP2 e EP3  
-**Data:** 29/11/2025  
+Este repositório contém a implementação SQL do minimundo **STUR**, um sistema de gerenciamento de transporte urbano desenvolvido para a disciplina de **Modelagem de Banco de Dados**.
 
 ---
 
-## **📘 Descrição do Projeto**
+📌 **Objetivo**
 
-O **STUR (Sistema de Transporte Urbano Rápido)** é um banco de dados completo projetado para gerenciar:
+Implementar a criação e manipulação de dados em um **banco de dados relacional MySQL**, aplicando:
 
-- **Ônibus**
-- **Motoristas**
-- **Rotas**
-- **Viagens**
-
-O sistema foi desenvolvido em **MySQL**, seguindo todas as melhores práticas de:
-
-- **Modelagem Conceitual**
-- **Diagrama Entidade-Relacionamento (DER)**
-- **Modelo Lógico**
-- **Normalização (1FN, 2FN e 3FN)**
-- **Implementação (DDL, DML e DQL)**
+- **DML** (INSERT, SELECT, UPDATE, DELETE)  
+- **Integridade referencial com chaves estrangeiras**  
+- **Modelagem em 3FN (Terceira Forma Normal)**  
+- **Testes e execução no MySQL Workbench**  
+- **Versionamento e organização no GitHub**
 
 ---
 
-## **🗄️ Estrutura do Banco de Dados**
+🗂 **Estrutura do Repositório**
 
-O banco é composto por **4 tabelas principais**, totalmente normalizadas:
-
-### **1. MOTORISTA**
-Armazena informações dos motoristas:  
-**nome**, **cpf**, **telefone**, **categoria_cnh**.
-
-### **2. ONIBUS**
-Registra dados dos veículos:  
-**número da frota**, **placa**, **capacidade**.
-
-### **3. ROTA**
-Define os caminhos do sistema:  
-**origem**, **destino**, **nome da rota**.
-
-### **4. VIAGEM**
-Tabela central do sistema:  
-**data**, **horário**, **motorista**, **ônibus**, **rota**.
-
-### **Características Técnicas**
-- Todas as tabelas em **3FN**  
-- Relacionamentos **1:N** totalmente validados  
-- **Constraints de unicidade**: CPF, frota e placa  
-- Uso de **chaves primárias inteiras** (surrogate keys)
+📦 **stur-sql**  
+ ┣ 📄 **01-schema.sql** → Criação do banco e tabelas (DDL)  
+ ┣ 📄 **02-inserts.sql** → Povoamento inicial das tabelas  
+ ┣ 📄 **03-selects.sql** → Consultas analíticas e operacionais  
+ ┣ 📄 **04-updates-deletes.sql** → Manipulação dos dados (UPDATE/DELETE)  
+ ┗ 📄 **README.md** → Documentação geral do projeto  
 
 ---
 
-## **📁 Conteúdo do Repositório**
+🛠 **Tecnologias Utilizadas**
 
+- **MySQL Server 8.0**  
+- **MySQL Workbench 8**  
+- **SQL (DDL, DML e DQL)**  
+- Princípios de **modelagem e normalização**  
+
+---
+
+📥 **Execução**
+
+1. Abra o **MySQL Workbench**  
+2. Conecte ao servidor local  
+3. Execute:
+
+```sql
+USE stur_db;
