@@ -1,7 +1,14 @@
 🚍 STUR — Sistema de Transporte Urbano Rápido  
 Experiência Prática IV — Modelagem e Manipulação de Dados (ADS)
 
-Este repositório contém a implementação SQL do minimundo **STUR**, um sistema de gerenciamento de transporte urbano desenvolvido para a disciplina de **Modelagem de Banco de Dados**.
+Este repositório contém o projeto SQL completo desenvolvido para a disciplina de Modelagem de Banco de Dados (ADS - Cruzeiro do Sul Virtual). O objetivo foi modelar, implementar e manipular um banco de dados relacional funcional (em 3ª Forma Normal - 3FN).
+
+O projeto foi dividido em quatro etapas principais:
+
+Modelo Conceitual: Definição do minimundo e dos conceitos de dados.
+Modelo Entidade-Relacionamento (DER): Criação do diagrama DER, identificando entidades, atributos e cardinalidades.
+Modelo Lógico: Conversão do DER em um esquema de tabelas normalizado (3FN).
+Implementação (SQL): Criação dos scripts SQL (DDL e DML) para construir e testar o banco de dados.
 
 ---
 
@@ -62,3 +69,4 @@ Curso: Análise e Desenvolvimento de Sistemas (ADS)
 
 
 Made by⚡Paulo Ferreira
+
