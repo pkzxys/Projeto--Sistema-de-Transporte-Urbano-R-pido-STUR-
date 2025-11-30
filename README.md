@@ -45,3 +45,17 @@ Implementar a criação e manipulação de dados em um **banco de dados relacion
 
 ```sql
 USE stur_db;
+
+Rode os scripts nesta ordem:
+
+1️⃣ 01-schema.sql
+2️⃣ 02-inserts.sql
+3️⃣ 03-selects.sql
+4️⃣ 04-updates-deletes.sql
+
+
+Feito por:
+
+Paulo Ferreira
+Projeto acadêmico — Universidade Cruzeiro do Sul
+Curso: Análise e Desenvolvimento de Sistemas (ADS)
