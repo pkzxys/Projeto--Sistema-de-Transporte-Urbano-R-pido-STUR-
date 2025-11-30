@@ -3,23 +3,23 @@
 -- Sistema: STUR – Sistema de Transporte Urbano Rápido
 -- -----------------------------------------------------
 
--- Criar Banco
+-- Criar Banco de Dados
 CREATE DATABASE IF NOT EXISTS stur_db;
 USE stur_db;
 
 -- =====================================================
--- Tabela: MOTORISTA
+-- 1. Tabela: MOTORISTA
 -- =====================================================
 CREATE TABLE MOTORISTA (
     id_motorista INT PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL,
+    nome VARCHAR(120) NOT NULL,
     cpf VARCHAR(20) UNIQUE NOT NULL,
     telefone VARCHAR(20),
     categoria_cnh CHAR(1) NOT NULL
 );
 
 -- =====================================================
--- Tabela: ONIBUS
+-- 2. Tabela: ONIBUS
 -- =====================================================
 CREATE TABLE ONIBUS (
     id_onibus INT PRIMARY KEY,
@@ -29,17 +29,17 @@ CREATE TABLE ONIBUS (
 );
 
 -- =====================================================
--- Tabela: ROTA
+-- 3. Tabela: ROTA
 -- =====================================================
 CREATE TABLE ROTA (
     id_rota INT PRIMARY KEY,
-    nome_rota VARCHAR(100) NOT NULL,
-    origem VARCHAR(100) NOT NULL,
-    destino VARCHAR(100) NOT NULL
+    nome_rota VARCHAR(120) NOT NULL,
+    origem VARCHAR(120) NOT NULL,
+    destino VARCHAR(120) NOT NULL
 );
 
 -- =====================================================
--- Tabela: VIAGEM
+-- 4. Tabela: VIAGEM
 -- =====================================================
 CREATE TABLE VIAGEM (
     id_viagem INT PRIMARY KEY,
@@ -51,12 +51,15 @@ CREATE TABLE VIAGEM (
     id_motorista INT NOT NULL,
     id_rota INT NOT NULL,
 
-    FOREIGN KEY (id_onibus) REFERENCES ONIBUS(id_onibus)
+    CONSTRAINT fk_viagem_onibus
+        FOREIGN KEY (id_onibus) REFERENCES ONIBUS(id_onibus)
         ON UPDATE CASCADE ON DELETE RESTRICT,
 
-    FOREIGN KEY (id_motorista) REFERENCES MOTORISTA(id_motorista)
+    CONSTRAINT fk_viagem_motorista
+        FOREIGN KEY (id_motorista) REFERENCES MOTORISTA(id_motorista)
         ON UPDATE CASCADE ON DELETE RESTRICT,
 
-    FOREIGN KEY (id_rota) REFERENCES ROTA(id_rota)
+    CONSTRAINT fk_viagem_rota
+        FOREIGN KEY (id_rota) REFERENCES ROTA(id_rota)
         ON UPDATE CASCADE ON DELETE RESTRICT
 );
