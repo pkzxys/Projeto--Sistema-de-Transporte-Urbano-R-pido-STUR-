@@ -5,10 +5,10 @@ Este repositório contém o projeto SQL completo desenvolvido para a disciplina 
 
 O projeto foi dividido em quatro etapas principais:
 
-Modelo Conceitual: Definição do minimundo e dos conceitos de dados.
-Modelo Entidade-Relacionamento (DER): Criação do diagrama DER, identificando entidades, atributos e cardinalidades.
-Modelo Lógico: Conversão do DER em um esquema de tabelas normalizado (3FN).
-Implementação (SQL): Criação dos scripts SQL (DDL e DML) para construir e testar o banco de dados.
+- **Modelo Conceitual:** Definição do minimundo e dos conceitos de dados.
+- **Modelo Entidade-Relacionamento (DER):** Criação do diagrama DER, identificando entidades, atributos e cardinalidades.
+- **Modelo Lógico:** Conversão do DER em um esquema de tabelas normalizado (3FN).
+- **Implementação (SQL):** Criação dos scripts SQL (DDL e DML) para construir e testar o banco de dados.
 
 ---
 
@@ -69,6 +69,7 @@ Curso: Análise e Desenvolvimento de Sistemas (ADS)
 
 
 Made by⚡Paulo Ferreira
+
 
 
 
