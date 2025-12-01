@@ -1,4 +1,4 @@
-🚍 STUR — Sistema de Transporte Urbano Rápido  
+🚍 #**STUR — Sistema de Transporte Urbano Rápido**#  
 Experiência Prática IV — Modelagem e Manipulação de Dados (ADS)
 
 Este repositório contém o projeto SQL completo desenvolvido para a disciplina de Modelagem de Banco de Dados (ADS - Cruzeiro do Sul Virtual). O objetivo foi modelar, implementar e manipular um banco de dados relacional funcional (em 3ª Forma Normal - 3FN).
@@ -69,4 +69,5 @@ Curso: Análise e Desenvolvimento de Sistemas (ADS)
 
 
 Made by⚡Paulo Ferreira
+
 
